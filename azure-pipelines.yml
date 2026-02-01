@@ -105,7 +105,7 @@ stages:
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'
 
-          - task: KubernetesManifest@0
+          - task: KubernetesManifest@1
             displayName: Create imagePullSecret
             inputs:
               action: 'createSecret'
@@ -115,7 +115,7 @@ stages:
               secretName: '$(imagePullSecret)'
               dockerRegistryEndpoint: 'acr-svc'
 
-          - task: KubernetesManifest@0
+          - task: KubernetesManifest@1
             displayName: Deploy to the new namespace in the Kubernetes cluster
             inputs:
               action: 'deploy'
